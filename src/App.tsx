@@ -145,7 +145,7 @@ function App() {
           </div>
         </div>
         <div className="w-56 relative ">
-          <p className="absolute right-[-40px] top-[-40px] font-bold">{importImg}/4</p>
+          <p className="absolute right-[-40px] top-[-20px] font-bold text-blue-600 ">{importImg}/4</p>
           {importImg === 4 ? (
             <button onClick={resetImage} className="w-full block my-3 cursor-pointer text-center py-2 bg-yellow-100 rounded-lg text-blue-600 border-solid border-2 border-blue-600">
               🔄 초기화
