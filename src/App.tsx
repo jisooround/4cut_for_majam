@@ -9,6 +9,8 @@ interface ImageData {
   src: string;
 }
 
+type SaveImage = (e: React.ChangeEvent<HTMLInputElement>, index?: number) => Promise<void>;
+
 const imageData: ImageData[] = [
   {
     index: 0,
@@ -43,16 +45,12 @@ function App() {
   }, [imgFile]);
 
   // 이미지 저장 함수 (이벤트를 전달)
-  const saveImgFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const saveImgFile: SaveImage = async (e, index) => {
     const files = e.target.files!;
+
     console.log("target", e.target.files);
     // 첨부한 파일이 없다면 return
     if (!files[0]) return;
-
-    // 기본이미지의 개수(첨부되지않은 사진개수) + 타겟 files개수(첨부된 사진개수)가 4를 넘는다면 알럿
-    if (imgFile.filter((item) => item.src !== "/public/plus.png").length + files.length > 4) {
-      return alert("최대 4개 사진만 첨부할 수 있습니다.");
-    }
 
     // 기존 imgFile State를 얕게 복사
     const newImgFiles = [...imgFile];
@@ -76,22 +74,24 @@ function App() {
         imageUrl = URL.createObjectURL(file);
       }
 
+      // 개별첨부, 일괄첨부에 따른 처리
+      if (index) {
+        console.log("indx", index);
+        newImgFiles[index] = { index: index, src: imageUrl };
+        setImgFile(newImgFiles);
+        console.log(imgFile);
+        return;
+      }
+
       // 빈 슬롯의 인덱스를 찾아 이미지 첨부
       const emptySlotIndex = newImgFiles.findIndex((item) => item.src === "/public/plus.png");
       console.log("emptySlotIndex", emptySlotIndex);
-
-      // if (emptySlotIndex !== -1) {
+      if (emptySlotIndex === -1) {
+        return alert("최대 4개 사진만 첨부할 수 있습니다. 사진을 수정하시려면 개별 첨부를 해주시거나, 초기화시킨 후 다시시도해주시기 바랍니다.");
+      }
       newImgFiles[emptySlotIndex] = { index: emptySlotIndex, src: imageUrl };
-      // } else {
-      //   newImgFiles.push({
-      //     index: newImgFiles.length,
-      //     src: imageUrl,
-      //   });
-      // }
-
-      // if (newImgFiles.filter((item) => item.src !== "/public/plus.png").length >= 4) break;
+      setImgFile(newImgFiles);
     }
-    setImgFile(newImgFiles.slice(0, 4)); // 최대 4개의 이미지만 유지
   };
 
   // 이미지 내보내기 동작 함수
@@ -121,19 +121,22 @@ function App() {
         </div>
         <div className="w-full h-auto m-auto flex flex-wrap justify-center">
           <div ref={divRef} className="w-56 h-auto flex flex-wrap justify-center ">
-            <div className="absolute z-10 left-0 right-0 mx-auto w-56">
+            <div className="absolute left-0 right-0 mx-auto w-56">
               <img src="/public/frame.png" alt="" />
             </div>
-            <div className="pt-[91px] pb-[33px]">
+            <div className="pt-[91px] pb-[33px] z-10">
               {imgFile.map((item, index) => (
-                <div key={index} className="w-[200px] h-[112px] mb-[10px] bg-slate-50 overflow-hidden object-cover relative flex justify-center items-center">
-                  <img src={item.src} width={"auto"} height={100} alt="img" className="z-90" />
-                </div>
+                <>
+                  <input onChange={(e) => saveImgFile(e, index)} type="file" id={`image_${index}`} className="hidden" />
+                  <label htmlFor={`image_${index}`} key={index} className="w-[200px] h-[112px] mb-[10px] bg-slate-50 overflow-hidden object-cover relative flex justify-center items-center">
+                    <img src={item.src} width={"auto"} height={100} alt="img" className="z-90" />
+                  </label>
+                </>
               ))}
             </div>
           </div>
         </div>
-        <div className="w-56 relative">
+        <div className="w-56 relative ">
           <p className="absolute right-[-40px] top-[-40px] font-bold">{importImg}/4</p>
           <label className="block my-3 cursor-pointer px-12 py-2 bg-yellow-100 rounded-lg text-blue-600 border-solid border-2 border-blue-600" htmlFor="image_one">
             📂 이미지 추가하기
