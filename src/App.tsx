@@ -14,11 +14,11 @@ type SaveImage = (e: React.ChangeEvent<HTMLInputElement>, index?: number) => Pro
 const imageData: ImageData[] = [
   {
     index: 0,
-    src: "plus.png",
+    src: "/plus.png",
   },
   {
     index: 1,
-    src: "plus.png",
+    src: "/plus.png",
   },
   {
     index: 2,
