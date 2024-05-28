@@ -147,17 +147,17 @@ function App() {
         <div className="w-56 relative ">
           <p className="absolute right-[-40px] top-[-40px] font-bold">{importImg}/4</p>
           {importImg === 4 ? (
-            <button onClick={resetImage} className="w-full block my-3 cursor-pointer px-12 py-2 bg-yellow-100 rounded-lg text-blue-600 border-solid border-2 border-blue-600">
+            <button onClick={resetImage} className="w-full block my-3 cursor-pointer text-center py-2 bg-yellow-100 rounded-lg text-blue-600 border-solid border-2 border-blue-600">
               🔄 초기화
             </button>
           ) : (
-            <label className="block my-3 cursor-pointer px-12 py-2 bg-yellow-100 rounded-lg text-blue-600 border-solid border-2 border-blue-600" htmlFor="image_one">
+            <label className="w-full block my-3 cursor-pointer text-center py-2 bg-yellow-100 rounded-lg text-blue-600 border-solid border-2 border-blue-600" htmlFor="image_one">
               📂 이미지 추가하기
             </label>
           )}
           {/* file 첨부 input */}
           <input type="file" onChange={(e) => saveImgFile(e)} id="image_one" multiple accept="image/*, .heic" className="hidden absolute" ref={imgRef} />
-          <button onClick={handleDownload} className="cursor-pointer px-12 py-2 bg-yellow-100 rounded-lg text-blue-600 border-solid border-2 border-blue-600">
+          <button onClick={handleDownload} className="w-full cursor-pointer text-center py-2 bg-yellow-100 rounded-lg text-blue-600 border-solid border-2 border-blue-600">
             📂 이미지 내보내기
           </button>
         </div>
