@@ -14,19 +14,19 @@ type SaveImage = (e: React.ChangeEvent<HTMLInputElement>, index?: number) => Pro
 const imageData: ImageData[] = [
   {
     index: 0,
-    src: "/public/plus.png",
+    src: "plus.png",
   },
   {
     index: 1,
-    src: "/public/plus.png",
+    src: "plus.png",
   },
   {
     index: 2,
-    src: "/public/plus.png",
+    src: "/plus.png",
   },
   {
     index: 3,
-    src: "/public/plus.png",
+    src: "/plus.png",
   },
 ];
 
@@ -39,7 +39,7 @@ function App() {
   // 첨부이미지 개수 state변경
   useEffect(() => {
     // console.log("imgFile:::::::: ", imgFile);
-    const imgCount = imgFile.filter((item) => item.src === "/public/plus.png").length;
+    const imgCount = imgFile.filter((item) => item.src === "/plus.png").length;
     // console.log(imgCount);
     setImportImg(4 - imgCount);
   }, [imgFile]);
@@ -84,7 +84,7 @@ function App() {
       }
 
       // 빈 슬롯의 인덱스를 찾아 이미지 첨부
-      const emptySlotIndex = newImgFiles.findIndex((item) => item.src === "/public/plus.png");
+      const emptySlotIndex = newImgFiles.findIndex((item) => item.src === "/plus.png");
       // console.log("emptySlotIndex", emptySlotIndex);
       if (emptySlotIndex === -1) {
         return alert("최대 4개 사진만 첨부할 수 있습니다. 사진을 수정하시려면 개별 첨부를 해주시거나, 초기화시킨 후 다시시도해주시기 바랍니다.");
@@ -123,14 +123,14 @@ function App() {
     <>
       <div className="w-screen min-h-screen bg-yellow-100 pb-10 overflow-auto flex flex-wrap justify-center">
         <div className="w-full text-center py-4">
-          <img className="w-[350px] mx-auto" src="/public/logo.png" />
+          <img className="w-[350px] mx-auto" src="/logo.png" />
           <p>1️⃣ '이미지 추가하기'버튼을 클릭하여 사진 4장을 선택 & 첨부</p>
           <p>2️⃣ '이미지 내보내기'버튼을 클릭 😺</p>
         </div>
         <div className="w-full h-auto m-auto flex flex-wrap justify-center">
           <div ref={divRef} className="w-56 h-auto flex flex-wrap justify-center ">
             <div className="absolute left-0 right-0 mx-auto w-56">
-              <img src="/public/frame.png" alt="" />
+              <img src="/frame.png" alt="" />
             </div>
             <div className="pt-[91px] pb-[33px] z-10">
               {imgFile.map((item, index) => (
