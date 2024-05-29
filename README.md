@@ -1,30 +1,38 @@
-# React + TypeScript + Vite
+# 마잼네컷
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔗 URL : https://4cut-photo.netlify.app/
 
-Currently, two official plugins are available:
+## 01. 프로젝트 소개
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+마천동 성당에서 진행한 어린이날 행사 사진을 인생네컷으로 만들어주는 '마잼네컷' 프로젝트입니다.
 
-## Expanding the ESLint configuration
+### 실행
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```
+$ git clone https://github.com/jisooround/4cut_for_majam.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+```
+$ npm install
+```
+
+```
+$ npm run dev
+```
+
+## 02. 기술 스택
+
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+ <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+ <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+ <img src="https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white">
+
+### 라이브러리
+
+```json
+"heic2any": "^0.0.4",  // heic => jpeg 변환
+"file-saver": "^2.0.5", // 사진 저장
+"html2canvas": "^1.4.1", // 사진 저장
+```
+
+## 03. 프로젝트 화면

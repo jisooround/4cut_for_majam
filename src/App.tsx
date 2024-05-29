@@ -112,7 +112,7 @@ function App() {
   };
 
   const resetImage = () => {
-    if (confirm("정말 초기화하시겠습니까??") == true) {
+    if (confirm("정말 초기화하시겠습니까?") == true) {
       setImgFile(imageData);
     } else {
       return false;
