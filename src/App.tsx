@@ -3,6 +3,7 @@ import "./css/index.css";
 import heic2any from "heic2any";
 import html2canvas from "html2canvas";
 import saveAs from "file-saver";
+import Floating from "./components/Floating";
 
 interface ImageData {
   index: number;
@@ -121,6 +122,7 @@ function App() {
 
   return (
     <>
+      <Floating />
       <div className="w-screen min-h-screen bg-yellow-100 pb-10 overflow-auto flex flex-wrap justify-center">
         <div className="w-full text-center py-4">
           <img className="w-[350px] mx-auto" src="/logo.png" />
