@@ -36,11 +36,19 @@ $ npm run dev
 
 #### 일괄첨부 기능
 
+<img src="./public/attach-all.gif">
+
 #### 개별첨부 기능
+
+<img src="./public/individual-attachment.gif">
 
 #### 초기화 기능
 
+<img src="./public/reset.gif">
+
 #### 내보내기 기능
+
+<img src="./public/export.gif">
 
 ## 04. 개선 방향
 
