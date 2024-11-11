@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const Floating = () => {
   const [show, setShow] = useState<boolean>(false);
